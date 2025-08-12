@@ -1,0 +1,7 @@
+motor 
+sentence-transformers 
+pandas 
+cython 
+numpy
+fastapi
+uvicorn
