@@ -1,6 +1,5 @@
 # server.py
 from fastapi import FastAPI, Query
-import asyncio
 import naive_rag
 import cython_rag
 

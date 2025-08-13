@@ -5,14 +5,14 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from sentence_transformers import SentenceTransformer
 from cos import cosine_similarity
 
-embedding_model = SentenceTransformer("Alibaba-NLP/gte-base-en-v1.5", trust_remote_code=True)
+model = SentenceTransformer("Alibaba-NLP/gte-base-en-v1.5", trust_remote_code=True)
 
 
 async def cython_rag(query, top_k=3):
     client = AsyncIOMotorClient("mongodb://localhost:27017")
     collection = client["anime_db"]["animes"]
 
-    query_emb = embedding_model.encode(query).astype(np.float32)
+    query_emb = model.encode(query).astype(np.float32)
     docs = []
     texts = []
     async for doc in collection.find({}):
