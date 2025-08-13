@@ -1,7 +1,7 @@
 # server.py
 from fastapi import FastAPI, Query
 import naive_rag
-import cython_rag
+from cython_rag import cythonrag
 
 app = FastAPI()
 
@@ -12,5 +12,5 @@ async def naive_search(query: str = Query(...)):
 
 @app.get("/cython_search")
 async def cython_search(query: str = Query(...)):
-    results = await cython_rag.cython_rag(query)
+    results = await cythonrag(query)
     return {"results": results}

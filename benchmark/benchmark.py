@@ -1,7 +1,7 @@
 import time
 import asyncio
 from naive_rag import naive_rag
-from cython_rag import cython_rag
+from cython_rag import cythonrag
 
 queries = [
     "school romance anime",
@@ -29,7 +29,7 @@ print(f"Naive Python avg per query: {(end_time - start_time)/len(queries):.4f} s
 # Cython RAG
 start_time = time.time()
 for q in queries:
-    _ = asyncio.run(cython_rag(q, top_k=3))
+    _ = asyncio.run(cythonrag(q, top_k=3))
 end_time = time.time()
 print(f"Cython total: {end_time - start_time:.4f} sec")
 print(f"Cython avg per query: {(end_time - start_time)/len(queries):.4f} sec")
