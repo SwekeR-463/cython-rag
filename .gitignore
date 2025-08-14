@@ -1,3 +1,4 @@
 build
 __pycache__
-cython_rag.py 
+cython_rag.html
+cython_rag.cpython-312-x86_64-linux-gnu.so

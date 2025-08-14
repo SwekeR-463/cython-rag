@@ -7,11 +7,13 @@ from sentence_transformers import SentenceTransformer
 cimport cython
 cimport numpy as np
 
+# removes index bound checking 
 @cython.boundscheck(False)
+# disables negative indexing
 @cython.wraparound(False)
 def cosine_similarity(np.ndarray[np.float32_t, ndim=2] embeddings,
                       np.ndarray[np.float32_t, ndim=1] query):
-    cdef Py_ssize_t i, n = embeddings.shape[0]
+    cdef Py_ssize_t i, n = embeddings.shape[0] # Py_ssize_t -> c type for array indexing
     cdef np.ndarray[np.float32_t, ndim=1] scores = np.zeros(n, dtype=np.float32)
     cdef float qnorm = np.linalg.norm(query)
     for i in range(n):
